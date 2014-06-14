@@ -1,0 +1,3 @@
+source 'https://api.berkshelf.com'
+
+cookbook 'zookeeper', github: 'SimpleFinance/chef-zookeeper', ref: '2.1.0'

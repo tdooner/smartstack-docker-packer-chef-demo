@@ -1,0 +1,20 @@
+DEPENDENCIES
+  zookeeper
+    git: git://github.com/SimpleFinance/chef-zookeeper.git
+    revision: 17ee02b4f4c16d338bfc42260762e54b2b612ba3
+    ref: 2.1.0
+
+GRAPH
+  build-essential (2.0.4)
+  java (1.22.0)
+  runit (1.5.10)
+    build-essential (>= 0.0.0)
+    yum (~> 3.0)
+    yum-epel (>= 0.0.0)
+  yum (3.2.2)
+  yum-epel (0.3.6)
+    yum (~> 3.0)
+  zookeeper (2.1.0)
+    build-essential (>= 0.0.0)
+    java (>= 0.0.0)
+    runit (>= 0.0.0)
