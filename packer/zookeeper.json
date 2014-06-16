@@ -1,0 +1,27 @@
+{
+  "builders": [{
+    "type": "docker",
+    "image": "phusion/baseimage",
+    "export_path": "/docker/zookeeper.tar",
+    "run_command": ["run", "-d", "-i", "-v", "{{.Volumes}}", "{{.Image}}", "/sbin/my_init", "--enable-insecure-key", "--", "/bin/bash"]
+  }],
+
+  "provisioners": [{
+    "type": "shell",
+    "inline": ["sudo apt-get update && sudo apt-get install -y ca-certificates"]
+  }, {
+    "type": "shell",
+    "inline": ["mkdir -p /var/chef/cache/ && curl http://apache.osuosl.org/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz > /var/chef/cache/zookeeper-3.4.6.tar.gz"]
+  }, {
+    "type": "chef-solo",
+    "cookbook_paths": ["./chef/site-cookbooks"],
+    "run_list": ["zookeeper_role"],
+    "execute_command": "sudo chef-solo -l debug -c {{.ConfigPath}} -j {{.JsonPath}}"
+  }],
+
+  "post-processors": [{
+    "type": "docker-import",
+    "repository": "ted27/packer-zookeeper",
+    "tag": "0.1"
+  }]
+}

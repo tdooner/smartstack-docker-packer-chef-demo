@@ -3,6 +3,7 @@
 CONTAINER=$(docker run \
               --publish 2181 \
               --detach \
+              --name zookeeper \
               ted27/packer-zookeeper:0.1 \
               bash /opt/zookeeper/zookeeper-3.4.6/bin/zkServer.sh start-foreground)
 

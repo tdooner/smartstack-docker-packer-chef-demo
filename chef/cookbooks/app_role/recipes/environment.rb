@@ -1,3 +1,9 @@
+package 'ruby'
+
+gem_package 'sinatra'
+
+directory '/home/tom'
+
 user 'tom' do
   home '/home/tom'
 end
@@ -5,10 +11,4 @@ end
 group 'tom' do
   members ['tom']
   append true
-end
-
-cookbook_file 'app.rb' do
-  path '/home/tom/app.rb'
-  user 'tom'
-  group 'tom'
 end

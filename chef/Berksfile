@@ -1,3 +1,10 @@
 source 'https://api.berkshelf.com'
 
+# community cookbooks:
 cookbook 'zookeeper', github: 'SimpleFinance/chef-zookeeper', ref: '2.1.0'
+cookbook 'smartstack', github: 'airbnb/smartstack-cookbook', ref: 'v0.6.0'
+
+# my cookbooks:
+cookbook 'app_role', path: 'cookbooks/app_role'
+cookbook 'service_role', path: 'cookbooks/service_role'
+cookbook 'zookeeper_role', path: 'cookbooks/zookeeper_role'

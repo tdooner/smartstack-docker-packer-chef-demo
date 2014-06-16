@@ -1,0 +1,22 @@
+{
+  "builders": [{
+    "type": "docker",
+    "image": "ted27/packer-app:0.1",
+    "export_path": "/docker/service_role.tar",
+    "run_command": ["run", "-d", "-i", "-v", "{{.Volumes}}", "{{.Image}}", "/sbin/my_init", "--enable-insecure-key", "--", "/bin/bash"],
+    "pull": false
+  }],
+
+  "provisioners": [{
+    "type": "chef-solo",
+    "cookbook_paths": ["./chef/site-cookbooks"],
+    "skip_install": true,
+    "run_list": ["service_role"]
+  }],
+
+  "post-processors": [{
+    "type": "docker-import",
+    "repository": "ted27/packer-service",
+    "tag": "0.1"
+  }]
+}
