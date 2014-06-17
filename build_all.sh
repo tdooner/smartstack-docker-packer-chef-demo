@@ -12,3 +12,4 @@ popd
 packer build $FILE_PATH/packer/zookeeper.json
 packer build $FILE_PATH/packer/app_role.json
 packer build $FILE_PATH/packer/service_role.json
+packer build $FILE_PATH/packer/load_balancer_role.json

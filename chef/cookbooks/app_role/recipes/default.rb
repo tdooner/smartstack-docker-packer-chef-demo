@@ -1,12 +1,9 @@
 include_recipe 'app_role::environment'
 include_recipe 'smartstack::synapse'
+include_recipe 'smartstack::nerve'
 
-gem_package 'unicorn'
-
-%w[app.rb config.ru unicorn.rb].each do |file|
-  cookbook_file file do
-    path "/home/tom/#{file}"
-    user 'tom'
-    group 'tom'
-  end
+cookbook_file 'app.rb' do
+  path '/home/tom/app.rb'
+  user 'tom'
+  group 'tom'
 end

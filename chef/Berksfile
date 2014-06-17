@@ -6,5 +6,6 @@ cookbook 'smartstack', github: 'airbnb/smartstack-cookbook', ref: 'v0.6.0'
 
 # my cookbooks:
 cookbook 'app_role', path: 'cookbooks/app_role'
+cookbook 'load_balancer_role', path: 'cookbooks/load_balancer_role'
 cookbook 'service_role', path: 'cookbooks/service_role'
 cookbook 'zookeeper_role', path: 'cookbooks/zookeeper_role'
