@@ -2,10 +2,11 @@ default.languages.ruby.default_version = '1.9.1'
 
 # Uses docker run's --link option, which puts an entry in /etc/hosts for
 # `zookeeper` pointing to the other dock:
-default.zookeeper.smartstack_cluster = ['zookeeper:2181']
+default.zookeeper.smartstack_cluster = ['172.17.0.2:2181']
 
 default.smartstack.services = {
   'hello_service' => {
+    'zk_path' => '/hello',
     'synapse' => {
       'discovery' => { 'method' => 'zookeeper' },
       'haproxy' => {
@@ -15,8 +16,8 @@ default.smartstack.services = {
     },
     'nerve' => {
       'port' => '4567',
-      'check_interval' => '3',
-      'checks' => [{ 'type' => 'http', 'uri' => '/health', 'timeout' => '2', 'rise' => 1, 'fall' => 1 }]
+      'check_interval' => 3,
+      'checks' => [{ 'type' => 'http', 'uri' => '/health', 'timeout' => 2, 'rise' => 1, 'fall' => 1 }]
     }
   }
 }

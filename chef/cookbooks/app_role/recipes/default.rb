@@ -1,6 +1,3 @@
-chef_gem 'chef-rewind'
-require 'chef/rewind'
-
 include_recipe 'app_role::environment'
 include_recipe 'smartstack::synapse'
 

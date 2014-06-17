@@ -1,17 +1,10 @@
 #!/bin/bash -el
 
-echo "Running service..."
-SERVICE=$(docker run \
-  --publish 4567 \
-  --detach \
-  --link zookeeper:zookeeper \
-  ted27/packer-service:0.1 \
-  /sbin/my_init --enable-insecure-key -- ruby /home/tom/app.rb -p 4567 -o 0.0.0.0)
-
 echo "Running app server..."
-CONTAINER=$(docker run \
+docker run \
   --publish 4567 \
-  --detach \
+  --publish 3181 \
   --link zookeeper:zookeeper \
+  -i -t \
   ted27/packer-app:0.1 \
-  /sbin/my_init --enable-insecure-key -- ruby /home/tom/app.rb -p 4567 -o 0.0.0.0)
+  /sbin/my_init --enable-insecure-key -- /bin/bash #ruby /home/tom/app.rb -p 4567 -o 0.0.0.0

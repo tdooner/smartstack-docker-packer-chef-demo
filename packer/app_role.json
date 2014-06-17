@@ -2,7 +2,7 @@
   "builders": [{
     "type": "docker",
     "image": "ted27/packer-zookeeper:0.1",
-    "export_path": "/docker/app_role.tar",
+    "export_path": "app_role.tar",
     "run_command": ["run", "-d", "-i", "-v", "{{.Volumes}}", "{{.Image}}", "/sbin/my_init", "--enable-insecure-key", "--", "/bin/bash"],
     "pull": false
   }],
