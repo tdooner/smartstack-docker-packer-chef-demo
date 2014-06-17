@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'json'
 require 'socket'
+require 'open-uri'
 
 # on boot, update the zookeeper config
 old_config = JSON.load(open('/opt/smartstack/synapse/config.json'))
@@ -11,5 +12,5 @@ f.close
 `service synapse restart`
 
 get '/' do
-  # Get the hello value from the service
+  open('http://0.0.0.0:9999').read + ' world'
 end
