@@ -11,8 +11,16 @@ JSON.dump(old_config, f)
 f.close
 `service nerve restart`
 
+def gaussian(mean, stddev)
+  theta = 2 * Math::PI * Kernel.rand
+  rho = Math.sqrt(-2 * Math.log(1 - Kernel.rand))
+  scale = stddev * rho
+  y = mean + scale * Math.sin(theta)
+  return y
+end
+
 get '/' do
-  sleep 1
+  sleep gaussian(0.3775, 0.01118)
 
   'Hello'
 end
